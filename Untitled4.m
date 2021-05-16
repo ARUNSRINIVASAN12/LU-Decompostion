@@ -43,28 +43,28 @@ fprintf("u(33) = %s\n\n",rats(u33))
 
 fprintf("\nLet LY = B   ,   LUX = B   ,   UX = Y\n");
 
-[fprintf("       1            0            0      \t "), fprintf("   y1 \t  "), fprintf("%d  ", a(1,:)), fprintf("\n")];
-[fprintf("%s      1             0      \t ", rats(l21)), fprintf(" * y2 \t= "), fprintf("%d  ", a(2,:)), fprintf("\n")];
-[fprintf("%s%s      1       \t ", rats(l31), rats(l32)), fprintf("   y3 \t  "), fprintf("%d  ", a(3,:)), fprintf("\n\n\n")];
+[fprintf("       1            0            0      \t "), fprintf("   y1 \t  "), fprintf("%s  ", rats(b(1))), fprintf("\n")];
+[fprintf("%s      1             0      \t ", rats(l21)), fprintf(" * y2 \t= "), fprintf("%s  ", rats(b(2))), fprintf("\n")];
+[fprintf("%s%s      1       \t ", rats(l31), rats(l32)), fprintf("   y3 \t  "), fprintf("%s  ", rats(b(3))), fprintf("\n\n\n")];
 
 final_l = [1 0 0; l21 1 0; l31 l32 1];
 
 final_y = final_l\b;
 
-[fprintf("y1   %d\n", round(final_y(1),2)), fprintf("y2 = %d\n", round(final_y(2),2)), fprintf("y3   %d\n\n", round(final_y(3),2))];
+[fprintf("y1   %s\n", rats(final_y(1))), fprintf("y2 = %s\n", rats(final_y(2))), fprintf("y3   %s\n\n", rats(final_y(3)))];
 
 fprintf("\nUX = Y\n\n");
 
-[fprintf("%s%s%s\t ", rats(u11), rats(u12), rats(u13)), fprintf("   x1 \t  "), fprintf("%d  ", a(1,:)), fprintf("\n")];
-[fprintf("      0      %s%s\t ", rats(u22), rats(u23)), fprintf(" * x2 \t= "), fprintf("%d  ", a(2,:)), fprintf("\n")];
-[fprintf("      0            0      %s\t ", rats(u33)), fprintf("   x3 \t  "), fprintf("%d  ", a(3,:)), fprintf("\n\n\n")];
+[fprintf("%s%s%s\t ", rats(u11), rats(u12), rats(u13)), fprintf("   x1 \t  "), fprintf("%s  ", rats(final_y(1))), fprintf("\n")];
+[fprintf("      0      %s%s\t ", rats(u22), rats(u23)), fprintf(" * x2 \t= "), fprintf("%s  ", rats(final_y(2))), fprintf("\n")];
+[fprintf("      0            0      %s\t ", rats(u33)), fprintf("   x3 \t  "), fprintf("%s  ", rats(final_y(3))), fprintf("\n\n\n")];
 
 final_u = [u11 u12 u13; 0 u22 u23; 0 0 u33];
 
 final_x = final_u\final_y;
 
-[fprintf("x1   %d\n", round(final_x(1),2)), fprintf("x2 = %d\n", round(final_x(2),2)), fprintf("x3   %d\n\n", round(final_x(3),2))];
+[fprintf("x1   %s\n", rats(final_x(1))), fprintf("x2 = %s\n", rats(final_x(2))), fprintf("x3   %s\n\n", rats(final_x(3)))];
 
 final_ans = a\b;
-[fprintf("x   %d\n", round(final_ans(1),2)), fprintf("y = %d\n", round(final_ans(2),2)), fprintf("z   %d\n\n", round(final_ans(3),2))];
+[fprintf("x   %s\n", rats(final_ans(1))), fprintf("y = %s\n", rats(final_ans(2))), fprintf("z   %s\n\n", rats(final_ans(3)))];
 
